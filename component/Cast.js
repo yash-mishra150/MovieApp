@@ -1,5 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
+import { Images185 } from '../api/moviedb';
 
 export default function Cast({ cast, navigation }) {
   let personName = 'Keanu Reevs';
@@ -22,17 +23,18 @@ export default function Cast({ cast, navigation }) {
               <View className="items-center w-20 h-20 overflow-hidden border rounded-full border-neutral-500">
                 <Image
                   className="w-20 h-24 rounded-2xl"
-                  source={require('../assets/CastPerson1.png')}
+                  // source={require('../assets/CastPerson1.png')}
+                  source={{uri: Images185(person?.profile_path)}}
                 />
               </View>
               <Text className="mt-1 text-xs text-white">
                 {
-                  CharacterName.length > 10 ? CharacterName.slice(0, 10) + '...' : CharacterName
+                  person?.character.length > 10 ? person?.character.slice(0, 10) + '...' : person?.character
                 }
               </Text>
               <Text className="mt-1 text-xs text-neutral-400">
                 {
-                  personName.length > 10 ? personName.slice(0, 10) + '...' : personName
+                  person?.original_name.length > 10 ? person?.original_name.slice(0, 10) + '...' : person?.original_name
                 }
               </Text>
             </TouchableOpacity>
